@@ -3,20 +3,19 @@
 </head>
 
 <body>
-  {{> hello}}
+  {{> party_list}}
 </body>
 
 <template name="party_list">
-	<form>
-	<input type="radio" name="party" value="name">Moderaterna<br> 
-	<input type="radio" name="party" value="female">Female
-	</form>
+	<ul class="party_list {{is_selected}}">
+		{{#each all}}
+			{{> party_list_entry}}
+		{{/each}}
+	</ul>
 </template>
 
-<template name="hello">
-  <h1>Hello World!</h1>  {{greeting}}
-  <input type="button" value="Click" />
+<template name="party_list_entry">
+	<li>{{name}}</li>
 </template>
-
 
 
