@@ -1,4 +1,7 @@
-  if (Meteor.isClient) {
+Patries = new Meteor.Collection("parties"); //name
+Candidates = new Meteor.Collection("candidates"); //name, party
+
+if (Meteor.isClient) {
   Template.hello.greeting = function () {
     return "Welcome to ETS170-Prototype. YEY";
   };
