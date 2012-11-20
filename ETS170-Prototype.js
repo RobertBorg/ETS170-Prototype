@@ -6,7 +6,7 @@ if (Meteor.isClient) {
   }
 
   Template.party_list_entry.is_selected = function () {
-    if(Session.get("selected_party")._id == this._id){
+    if(Session.get("selected_party") !== undefined && Session.get("selected_party")._id == this._id){
       return "party_selected";
     } else {
       return "";

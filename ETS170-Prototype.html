@@ -1,20 +1,33 @@
+<body>
+	<div id="container">
+		<div class="hero-unit">
+			<h1>VAL TILL RIKSDAGEN</h1>
+			<p>
+			{{> party_list}}
+			<p>
+				<div id=""
+				<a class="btn btn-primary btn-large">
+					Rösta!
+				</a>
+			</p>
+		</div>
+
+</body>
+
+
 <head>
-  <title>ETS170-Prototype</title>
+	<title>ETS170-Prototype</title>
 </head>
 
-<body>
-  {{> party_list}}
-</body>
 
-<body>
-  {{> candidate_list}}
-</body>
+
+
 
 <template name="party_list">
 
 	<ul class="party-list">
 		{{#each all}}
-			{{> party_list_entry}}
+		{{> party_list_entry}}
 		{{/each}}
 	</ul>
 </template>
@@ -27,7 +40,7 @@
 <template name="candidate_list" >
 	<ul>
 		{{#each candidates}}
-			{{> candidate_list_entry}}
+		{{> candidate_list_entry}}
 		{{/each}}
 	</ul>
 </template>
