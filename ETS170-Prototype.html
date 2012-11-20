@@ -11,8 +11,8 @@
 </body>
 
 <template name="party_list">
-	<h1>Välj ett parti</h1>
-	<ul class="party_list {{is_selected}}">
+
+	<ul class="party-list">
 		{{#each all}}
 			{{> party_list_entry}}
 		{{/each}}
@@ -20,11 +20,18 @@
 </template>
 
 <template name="party_list_entry">
-	<li>{{name}}</li>
+	<li class="{{is_selected}}">{{name}}</li>
+	{{> candidate_list}}
 </template>
 
+<template name="candidate_list" >
+	<ul>
+		{{#each candidates}}
+			{{> candidate_list_entry}}
+		{{/each}}
+	</ul>
+</template>
 
-<template name="candidate_list">
-	<h1>Välj en kandidat</h1>
-	
+<template name="candidate_list_entry">
+	<li>{{name}}</li>
 </template>

@@ -1,27 +1,21 @@
-Parties = new Meteor.Collection("parties"); //name
-Candidates = new Meteor.Collection("candidates"); //name, party
+Parties = new Meteor.Collection("parties"); //name candidates {name, priority[1..] 1 highest priority}
 
 if (Meteor.isClient) {
-
   Template.party_list.all = function () {
     return Parties.find();
   }
 
-  Template.party_list.is_selected = function () {
-    if(Session.get("selected_party") === this._id){
+  Template.party_list_entry.is_selected = function () {
+    if(Session.get("selected_party")._id == this._id){
       return "party_selected";
     } else {
       return "";
     }
   }
 
-  Template.candidate_list.all = function () {
-    Candidates.find({party: Session.get("selected_party")});
-  }
-
-  Template.party_list.events({
-    'click ul.party_list>li' : function () {
-      Session.set("selected_party",this._id);
+  Template.party_list_entry.events({
+    'click li' : function () {
+      Session.set("selected_party",this);
     }
   });
 }
