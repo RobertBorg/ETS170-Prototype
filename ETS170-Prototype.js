@@ -1,6 +1,6 @@
-if (Meteor.isClient) {
+  if (Meteor.isClient) {
   Template.hello.greeting = function () {
-    return "Welcome to ETS170-Prototype.";
+    return "Welcome to ETS170-Prototype. YEY";
   };
 
   Template.hello.events({
