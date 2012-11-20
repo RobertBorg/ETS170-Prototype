@@ -15,6 +15,10 @@ if (Meteor.isClient) {
     }
   }
 
+  Template.candidate_list.all = function () {
+    Candidates.find({party: Session.get("selected_party")});
+  }
+
   Template.party_list.events({
     'click ul.party_list>li' : function () {
       Session.set("selected_party",this._id);
