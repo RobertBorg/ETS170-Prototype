@@ -1,5 +1,7 @@
 Parties = new Meteor.Collection("parties"); //name candidates {name, priority[1..] 1 highest priority}
 
+var index = 0;
+
 if (Meteor.isClient) {
   Template.party_list.all = function () {
     return Parties.find();
@@ -11,6 +13,17 @@ if (Meteor.isClient) {
     } else {
       return "";
     }
+  }
+
+  Template.party_list.for_loop_number = function() {
+      if(index == 0) {
+        document.write("<div class=\"row-fluid\">");
+      }
+      if(index == 3) {
+        document.write("</div><!--/row-->");
+        index = 0;
+      }
+      index++;
   }
 
   Template.party_list_entry.events({
