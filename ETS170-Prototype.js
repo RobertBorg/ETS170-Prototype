@@ -32,10 +32,24 @@ if (Meteor.isClient) {
     }
   }
 
-  
+  Template.candidate_list.current_party = function () {
+    return Session.get("selected_party");
+  }
+
+  Template.selected_candidate.selected = function() {
+    if(Session.get("selected_candidate") !== undefined){
+      return "Du valde "+ Session.get("selected_candidate")["name"];
+    }
+  }
+
+  Template.candidate_list_entry.events({
+    'click li' : function () {
+      Session.set("selected_candidate",this);
+    }
+  });
 
   Template.party_list_entry.events({
-    'click li' : function () {
+    'click a.party-list-entry' : function () {
       Session.set("selected_party",this);
     }
   });

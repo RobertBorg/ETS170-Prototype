@@ -7,16 +7,16 @@
 
 			{{> party_list}}
 			{{> candidate_list}}
-			<p>
-				<a class="btn btn-primary btn-large">
-					Rösta!
-				</a>
-			</p>
+			{{> selected_candidate}}
+			<p><a class="btn btn-primary btn-large">Rösta!</a></p>
 		</div>
 	</div>
 </body>
 
 
+<template name ="selected_candidate">
+	{{selected}}
+</template>
 <template name="party_list">
 	{{#with all}}
 		{{#fluid_grid fetch}}
@@ -33,9 +33,11 @@
 
 <template name="candidate_list" >
 	<ul>
-		{{#each candidates}}
-		{{> candidate_list_entry}}
-		{{/each}}
+		{{#with current_party}}
+			{{#each candidates}}
+				{{> candidate_list_entry}}
+			{{/each}}
+		{{/with}}
 	</ul>
 </template>
 
