@@ -17,6 +17,10 @@
 	padding: 20px;
 }
 
+a.party-list-entry {
+	width: 80%;
+}
+
 #header h1 { margin: 0; }
 
 #content

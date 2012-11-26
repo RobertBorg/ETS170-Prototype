@@ -6,6 +6,7 @@
 			</div>
 
 			{{> party_list}}
+			{{> candidate_list}}
 			<p>
 				<a class="btn btn-primary btn-large">
 					Rösta!
@@ -16,17 +17,15 @@
 </body>
 
 
-<template name="party_list">
-	<div class="row-fluid">	
+<template name="party_list">	
 		{{#fluid_grid all}}
 			{{> party_list_entry}}
 		{{/fluid_grid}}
-	</div>
 </template>
 
 <template name="party_list_entry">
 	<div class="span4">
-		<a class="btn btn-success btn-large" href="#">{{name}}</a>  
+		<a class="btn btn-large btn-large party-list-entry" href="#">{{name}}</a>  
 	</div>
 </template>
 
