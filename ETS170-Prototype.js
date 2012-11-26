@@ -5,7 +5,6 @@ var index = 0;
 if (Meteor.isClient) {
   Handlebars.registerHelper('fluid_grid', function(context, block) {
     var ret = "";
-
     for(var i=0, j=context.length; i<j; i++) {
       if(i % 3 == 0){
         ret = ret + '<div class="row-fluid">';
@@ -22,7 +21,7 @@ if (Meteor.isClient) {
   });
 
   Template.party_list.all = function () {
-    return Parties.find().fetch();
+    return Parties.find();
   }
 
   Template.party_list_entry.is_selected = function () {

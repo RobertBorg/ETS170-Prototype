@@ -17,11 +17,11 @@
 
 
 <template name="party_list">
-	<div class="row-fluid">	
-		{{#fluid_grid all}}
+	{{#with all}}
+		{{#fluid_grid fetch}}
 			{{> party_list_entry}}
 		{{/fluid_grid}}
-	</div>
+	{{/with}}
 </template>
 
 <template name="party_list_entry">
