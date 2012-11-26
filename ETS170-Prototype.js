@@ -36,6 +36,14 @@ if (Meteor.isClient) {
     return Session.get("selected_party");
   }
 
+  Template.selected_party.selected = function() {
+      if(Session.get("selected_party") !== undefined ){
+        return Session.get("selected_party")["name"];
+    } else {
+        return "";
+    }
+  }
+
   Template.selected_candidate.selected = function() {
     if(Session.get("selected_candidate") !== undefined){
       return "Du valde "+ Session.get("selected_candidate")["name"];

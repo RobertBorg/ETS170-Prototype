@@ -6,6 +6,7 @@
 			</div>
 
 			{{> party_list}}
+			{{> selected_party}}
 			{{> candidate_list}}
 			{{> selected_candidate}}
 			<p><a class="btn btn-primary btn-large">Rösta!</a></p>
@@ -13,10 +14,14 @@
 	</div>
 </body>
 
+<Template name ="selected_party">
+	<h2> {{selected}} </h2>
+</Template>
 
 <template name ="selected_candidate">
 	{{selected}}
 </template>
+
 <template name="party_list">
 	{{#with all}}
 		{{#fluid_grid fetch}}
