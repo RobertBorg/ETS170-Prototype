@@ -3,8 +3,26 @@ Parties = new Meteor.Collection("parties"); //name candidates {name, priority[1.
 var index = 0;
 
 if (Meteor.isClient) {
+  Handlebars.registerHelper('fluid_grid', function(context, block) {
+    var ret = "";
+
+    for(var i=0, j=context.length; i<j; i++) {
+      if(i % 3 == 0){
+        ret = ret + '<div class="row-fluid">';
+      }
+      
+      ret = ret + block(context[i]);
+
+      if(i % 3 == 2){
+        ret = ret + "</div>";
+      }
+    }
+
+    return ret;
+  });
+
   Template.party_list.all = function () {
-    return Parties.find();
+    return Parties.find().fetch();
   }
 
   Template.party_list_entry.is_selected = function () {
@@ -15,16 +33,7 @@ if (Meteor.isClient) {
     }
   }
 
-  Template.party_list.for_loop_number = function() {
-      if(index == 0) {
-        document.write("<div class=\"row-fluid\">");
-      }
-      if(index == 3) {
-        document.write("</div><!--/row-->");
-        index = 0;
-      }
-      index++;
-  }
+  
 
   Template.party_list_entry.events({
     'click li' : function () {
