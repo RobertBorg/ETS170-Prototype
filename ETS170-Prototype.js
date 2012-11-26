@@ -51,7 +51,7 @@ if (Meteor.isClient) {
   }
 
   Template.candidate_list_entry.events({
-    'click li' : function () {
+    'click input[name="candidateRadios"]' : function () {
       Session.set("selected_candidate",this);
     }
   });
