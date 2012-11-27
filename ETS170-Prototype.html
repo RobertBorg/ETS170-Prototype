@@ -12,7 +12,6 @@
 
 				{{> party_list}}
 				<h2>{{> selected_party}}</h2>
-				{{> if_party_selected}}
 				{{> candidate_list}}
 				{{> vote_button}}
 					
@@ -42,9 +41,6 @@
 		</div>
 </template>
 
-<template name="if_party_selected">
-	{{selected_string}}
-</template>
 
 <template name ="selected_party">
 	{{selected}}
@@ -71,6 +67,9 @@
 <template name="candidate_list" >
 	<ul>
 		{{#with current_party}}
+		{{#if candidates}}
+			Du får bara markera en av dessa <b>anmälda</b> kandidater.
+		{{/if}}
 		{{#each candidates}}
 			{{> candidate_list_entry}}
 		{{else}}
