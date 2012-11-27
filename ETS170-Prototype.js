@@ -36,9 +36,6 @@ if (Meteor.isClient) {
     return Session.get("selected_party");
   }
 
-  Template.candidate_list.if_empty = function() {
-    if()
-  }
 
   Template.selected_party.selected = function() {
       if(Session.get("selected_party") !== undefined ){

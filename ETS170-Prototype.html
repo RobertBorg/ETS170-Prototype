@@ -73,7 +73,9 @@
 	<ul>
 		{{#with current_party}}
 		{{#each candidates}}
-		{{> candidate_list_entry}}
+			{{> candidate_list_entry}}
+		{{else}}
+			No candidates
 		{{/each}}
 		{{/with}}
 	</ul>	
