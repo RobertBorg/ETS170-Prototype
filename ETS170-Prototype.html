@@ -1,4 +1,5 @@
 <body>
+<<<<<<< HEAD
 	{{> main_container}}
 </body>
 
@@ -7,22 +8,23 @@
 		<div id="container">
 			<div class="hero-unit">
 				<div class="page-header">
-					<h1>VAL TILL RIKSDAGEN <small>Christofer Heimonen</small></h1>
+					<h1>VAL TILL RIKSDAGEN <small>Förnamn Efternamn - ÅÅÅÅMMDD-XXXX</small></h1>
 				</div>
 
 				{{> party_list}}
-				{{> selected_party}}
+				<h2>{{> selected_party}}</h2>
+				{{> if_party_selected}}
 				{{> candidate_list}}
-				{{> selected_candidate}}
 				{{> vote_button}}
-				
+					
 			</div>
 		</div>
 	{{/if}}
 </template>
 
-<Template name ="vote_button">
+<template name ="vote_button">
 	<P align="right">
+		<a class="btn btn-primary btn-large" href="#">Logga ut</a>
 		<a href="#myModal" role="button" class="btn btn-primary btn-large" data-toggle="modal">Rösta!</a></p>
 
 		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -32,52 +34,54 @@
 			</div>
 			<div class="modal-body">
 				<p>Du har nu röstat! <br> 
-					{{>selected_party}} <br>
-					{{>selected_candidate}}</p>
-				</div>
-				<div class="modal-footer">
-					<button class="btn" id="log-out-btn" data-dismiss="modal" aria-hidden="true">Logga ut</button>
-				</div>
+					Parti: {{>selected_party}} <br>
+					Kandidat: {{>selected_candidate}}</p>
 			</div>
-		</Template>
-
-		<Template name ="selected_party">
-			<h2> {{selected}} </h2>
-		</Template>
-
-		<template name ="selected_candidate">
-			{{selected}}
-		</template>
-
-		<template name="party_list">
-			{{#with all}}
-			{{#fluid_grid fetch}}
-			{{> party_list_entry}}
-			{{/fluid_grid}}
-			{{/with}}
-		</template>
-
-		<template name="party_list_entry">
-			<div class="span4">
-				<a class="btn btn-large btn-large party-list-entry" href="#">{{name}}</a>  
+			<div class="modal-footer">
+				<button class="btn" id="log-out-btn" data-dismiss="modal" aria-hidden="true">Logga ut</button>
 			</div>
-		</template>
+		</div>
+</template>
 
-		<template name="candidate_list" >
-			
-			<ul>
-				{{#with current_party}}
-				{{#each candidates}}
-				{{> candidate_list_entry}}
-				{{/each}}
-				{{/with}}
-			</ul>
-			
-		</template>
+<template name="if_party_selected">
+	{{selected_string}}
+</template>
 
-		<template name="candidate_list_entry">
-			<label class="radio">
-				<input type="radio" name="candidateRadios" id="candidateRadios1" value="option1" >
-				{{name}}
-			</label>
-		</template>
+<template name ="selected_party">
+	{{selected}}
+</template>
+
+<template name ="selected_candidate">
+	{{selected}}
+</template>
+
+<template name="party_list">
+	{{#with all}}
+	{{#fluid_grid fetch}}
+	{{> party_list_entry}}
+	{{/fluid_grid}}
+	{{/with}}
+</template>
+
+<template name="party_list_entry">
+	<div class="span4">
+		<a class="btn btn-large btn-large party-list-entry" href="#">{{name}}</a>  
+	</div>
+</template>
+
+<template name="candidate_list" >
+	<ul>
+		{{#with current_party}}
+		{{#each candidates}}
+		{{> candidate_list_entry}}
+		{{/each}}
+		{{/with}}
+	</ul>	
+</template>
+
+<template name="candidate_list_entry">
+	<label class="radio">
+		<input type="radio" name="candidateRadios" id="candidateRadios1" value="option1" >
+		{{name}}
+	</label>
+</template>

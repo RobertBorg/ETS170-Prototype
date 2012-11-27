@@ -44,9 +44,15 @@ if (Meteor.isClient) {
     }
   }
 
+  Template.if_party_selected.selected_string = function() {
+      if(Session.get("selected_party") !== undefined ){
+          return "Du får bara markera en av dessa <b>anmälda</b> kandidater.";
+      }
+  }
+
   Template.selected_candidate.selected = function() {
     if(Session.get("selected_candidate") !== undefined){
-      return "Du valde "+ Session.get("selected_candidate")["name"];
+      return Session.get("selected_candidate")["name"];
     }
   }
 
