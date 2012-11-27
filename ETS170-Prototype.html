@@ -2,13 +2,13 @@
 	<div id="container">
 		<div class="hero-unit">
 			<div class="page-header">
-				<h1>VAL TILL RIKSDAGEN <small>Christofer Heimonen</small></h1>
+				<h1>VAL TILL RIKSDAGEN <small>Förnamn Efternamn - ÅÅÅÅMMDD-XXXX</small></h1>
 			</div>
 
 			{{> party_list}}
-			{{> selected_party}}
+			<h2>{{> selected_party}}</h2>
+			{{> if_party_selected}}
 			{{> candidate_list}}
-			{{> selected_candidate}}
 			{{> vote_button}}
 			
 		</div>
@@ -17,6 +17,7 @@
 
 <Template name ="vote_button">
 	<P align="right">
+		<a class="btn btn-primary btn-large" href="#">Logga ut</a>
 		<a href="#myModal" role="button" class="btn btn-primary btn-large" data-toggle="modal">Rösta!</a></p>
 
 		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -26,8 +27,8 @@
 			</div>
 			<div class="modal-body">
 				<p>Du har nu röstat! <br> 
-					{{>selected_party}} <br>
-					{{>selected_candidate}}</p>
+					Parti: {{>selected_party}} <br>
+					Kandidat: {{>selected_candidate}}</p>
 				</div>
 				<div class="modal-footer">
 					<button class="btn" data-dismiss="modal" aria-hidden="true">Logga ut</button>
@@ -35,8 +36,12 @@
 			</div>
 		</Template>
 
+		<Template name="if_party_selected">
+			{{selected_string}}
+		</Template>
+
 		<Template name ="selected_party">
-			<h2> {{selected}} </h2>
+			{{selected}}
 		</Template>
 
 		<template name ="selected_candidate">
@@ -58,7 +63,6 @@
 		</template>
 
 		<template name="candidate_list" >
-			
 			<ul>
 				{{#with current_party}}
 				{{#each candidates}}
