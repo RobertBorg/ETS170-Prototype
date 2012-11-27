@@ -32,6 +32,11 @@ if (Meteor.isClient) {
     }
   }
 
+  Template.main_container.hasVoted = function () {
+    //TODO implement
+    return true;
+  }
+
   Template.candidate_list.current_party = function () {
     return Session.get("selected_party");
   }
