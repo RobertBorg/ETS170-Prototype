@@ -41,12 +41,6 @@ if (Meteor.isClient) {
     return Session.get("selected_party");
   }
 
-  Template.candidate_list.if_free_text_should_be_shown = function() {
-    if(Session.get("selected_party") !== undefined || Session.get("selected_party") !== null) {
-      return "<input type=\"text\" placeholder=\"Fritext\">";
-    }
-  }
-
   Template.selected_party.selected = function() {
       if(Session.get("selected_party") !== undefined ){
         return Session.get("selected_party")["name"];

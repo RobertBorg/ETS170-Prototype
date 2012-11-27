@@ -66,16 +66,19 @@
 
 <template name="candidate_list" >
 	<ul>
-		{{#with current_party}}
-		{{#if candidates}}
-			<p>Du får bara markera en av dessa <b>anmälda</b> kandidater.</p>
+		{{#if current_party}}
+			{{#with current_party}}
+			{{#if candidates}}
+				<p>Du får bara markera en av dessa <b>anmälda</b> kandidater.</p>
+			{{/if}}
+
+			{{#each candidates}}
+				{{> candidate_list_entry}}
+			{{else}}
+				<input type="text" placeholder="Fritext">
+			{{/each}}
+			{{/with}}
 		{{/if}}
-		{{#each candidates}}
-			{{> candidate_list_entry}}
-		{{else}}
-			{{if_free_text_should_be_shown}}
-		{{/each}}
-		{{/with}}
 	</ul>	
 </template>
 
