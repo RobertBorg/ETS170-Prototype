@@ -61,6 +61,12 @@ if (Meteor.isClient) {
       Session.set("selected_party",this);
     }
   });
+
+  Template.vote_button.events({
+    'click #log-out-btn' : function () {
+      Session.set("loggedIn",false);
+    }
+  });
 }
 
 if (Meteor.isServer) {

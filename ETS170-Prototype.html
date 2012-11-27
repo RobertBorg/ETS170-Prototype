@@ -1,19 +1,25 @@
 <body>
-	<div id="container">
-		<div class="hero-unit">
-			<div class="page-header">
-				<h1>VAL TILL RIKSDAGEN <small>Christofer Heimonen</small></h1>
-			</div>
-
-			{{> party_list}}
-			{{> selected_party}}
-			{{> candidate_list}}
-			{{> selected_candidate}}
-			{{> vote_button}}
-			
-		</div>
-	</div>
+	{{> main_container}}
 </body>
+
+<template name="main_container">
+	{{#if hasVoted}}
+		<div id="container">
+			<div class="hero-unit">
+				<div class="page-header">
+					<h1>VAL TILL RIKSDAGEN <small>Christofer Heimonen</small></h1>
+				</div>
+
+				{{> party_list}}
+				{{> selected_party}}
+				{{> candidate_list}}
+				{{> selected_candidate}}
+				{{> vote_button}}
+				
+			</div>
+		</div>
+	{{/if}}
+</template>
 
 <Template name ="vote_button">
 	<P align="right">
@@ -30,7 +36,7 @@
 					{{>selected_candidate}}</p>
 				</div>
 				<div class="modal-footer">
-					<button class="btn" data-dismiss="modal" aria-hidden="true">Logga ut</button>
+					<button class="btn" id="log-out-btn" data-dismiss="modal" aria-hidden="true">Logga ut</button>
 				</div>
 			</div>
 		</Template>
