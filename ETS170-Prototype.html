@@ -73,7 +73,7 @@
 		{{#each candidates}}
 			{{> candidate_list_entry}}
 		{{else}}
-			<input type="text" placeholder="Fritext">
+			{{if_free_text_should_be_shown}}
 		{{/each}}
 		{{/with}}
 	</ul>	
